@@ -1,0 +1,67 @@
+**STARTING SIMULATION**
+Creating threads...
+Initializing thread → 111
+Initializing thread → 112
+Initializing thread → 113
+Starting iteration 1 → 111
+⚠ Resource taken → 111
+Initializing thread → 114
+Initializing thread → 115
+Initializing thread → 116
+Starting iteration 1 → 114
+⚠ Resource taken → 114
+⚠ Resource taken → 114
+Initializing thread → 117
+Waiting for all threads to finish
+Starting iteration 1 → 116
+⚠ Resource taken → 116
+Starting iteration 1 → 117
+⚠ Resource taken → 117
+Starting iteration 1 → 115
+⚠ Resource taken → 115
+⚒ Work done → 117
+🆓 Resource released  → 117
+Starting iteration 2 → 117
+⚠ Resource taken → 117
+⚒ Work done → 116
+🆓 Resource released  → 116
+Starting iteration 2 → 116
+⚠ Resource taken → 116
+⚒ Work done → 117
+🆓 Resource released  → 117
+Starting iteration 1 → 112
+⚠ Resource taken → 112
+⚒ Work done → 114
+🆓 Resource released  → 114
+Starting iteration 2 → 114
+⚠ Resource taken → 114
+⚒ Work done → 111
+🆓 Resource released  → 111
+Starting iteration 2 → 111
+⚠ Resource taken → 111
+⚒ Work done → 115
+🆓 Resource released  → 115
+Starting iteration 2 → 115
+⚠ Resource taken → 115
+⚒ Work done → 116
+🆓 Resource released  → 116
+Starting iteration 1 → 113
+⚠ Resource taken → 113
+⚒ Work done → 112
+🆓 Resource released  → 112
+Starting iteration 2 → 112
+⚠ Resource taken → 112
+⚒ Work done → 111
+🆓 Resource released  → 111
+⚒ Work done → 112
+🆓 Resource released  → 112
+⚒ Work done → 115
+🆓 Resource released  → 115
+⚒ Work done → 113
+🆓 Resource released  → 113
+Starting iteration 2 → 113
+⚠ Resource taken → 113
+⚒ Work done → 114
+🆓 Resource released  → 114
+⚒ Work done → 113
+🆓 Resource released  → 113
