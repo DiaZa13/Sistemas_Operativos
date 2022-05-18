@@ -1,0 +1,101 @@
+**STARTING SIMULATION**
+Creating threads...
+Initializing thread → 111
+Initializing thread → 112
+Initializing thread → 113
+Initializing thread → 114
+Initializing thread → 115
+Initializing thread → 116
+Initializing thread → 117
+Waiting for all threads to finish
+🍴 Will be consume 4 → 114
+Starting iteration 1 → 114
+🖥 Mutex acquire, entering the monitor → 114
+✅ Enough resources available... → 114
+⚠ Resources taken: 4 → 114
+🍴 Will be consume 3 → 115
+Starting iteration 1 → 115
+🖥 Mutex acquire, entering the monitor → 115
+🚫 Not enough resources, it has to wait → 115
+🍴 Will be consume 1 → 116
+Starting iteration 1 → 116
+🖥 Mutex acquire, entering the monitor → 116
+✅ Enough resources available... → 116
+⚠ Resources taken: 1 → 116
+🍴 Will be consume 1 → 117
+Starting iteration 1 → 117
+🖥 Mutex acquire, entering the monitor → 117
+🚫 Not enough resources, it has to wait → 117
+🍴 Will be consume 2 → 111
+Starting iteration 1 → 111
+🖥 Mutex acquire, entering the monitor → 111
+🚫 Not enough resources, it has to wait → 111
+🍴 Will be consume 3 → 112
+Starting iteration 1 → 112
+🖥 Mutex acquire, entering the monitor → 112
+🚫 Not enough resources, it has to wait → 112
+🍴 Will be consume 5 → 113
+Starting iteration 1 → 113
+🖥 Mutex acquire, entering the monitor → 113
+🚫 Not enough resources, it has to wait → 113
+⚒ Work done → 114
+🆓 Resources released: 4 → 114
+Starting iteration 2 → 114
+🖥 Mutex acquire, entering the monitor → 114
+✅ Enough resources available... → 114
+⚠ Resources taken: 4 → 114
+⚒ Work done → 114
+🆓 Resources released: 4 → 114
+⚒ Work done → 116
+🆓 Resources released: 1 → 116
+Starting iteration 2 → 116
+🖥 Mutex acquire, entering the monitor → 116
+✅ Enough resources available... → 116
+⚠ Resources taken: 1 → 116
+⚠ Resources taken: 2 → 111
+⚠ Resources taken: 1 → 117
+⚒ Work done → 117
+🆓 Resources released: 1 → 117
+Starting iteration 2 → 117
+🖥 Mutex acquire, entering the monitor → 117
+✅ Enough resources available... → 117
+⚠ Resources taken: 1 → 117
+⚒ Work done → 111
+🆓 Resources released: 2 → 111
+Starting iteration 2 → 111
+🖥 Mutex acquire, entering the monitor → 111
+✅ Enough resources available... → 111
+⚠ Resources taken: 2 → 111
+⚒ Work done → 116
+🆓 Resources released: 1 → 116
+⚒ Work done → 117
+🆓 Resources released: 1 → 117
+⚠ Resources taken: 3 → 112
+⚒ Work done → 111
+🆓 Resources released: 2 → 111
+⚒ Work done → 112
+🆓 Resources released: 3 → 112
+Starting iteration 2 → 112
+🖥 Mutex acquire, entering the monitor → 112
+✅ Enough resources available... → 112
+⚠ Resources taken: 3 → 112
+⚒ Work done → 112
+🆓 Resources released: 3 → 112
+⚠ Resources taken: 3 → 115
+⚒ Work done → 115
+🆓 Resources released: 3 → 115
+Starting iteration 2 → 115
+🖥 Mutex acquire, entering the monitor → 115
+✅ Enough resources available... → 115
+⚠ Resources taken: 3 → 115
+⚒ Work done → 115
+🆓 Resources released: 3 → 115
+⚠ Resources taken: 5 → 113
+⚒ Work done → 113
+🆓 Resources released: 5 → 113
+Starting iteration 2 → 113
+🖥 Mutex acquire, entering the monitor → 113
+✅ Enough resources available... → 113
+⚠ Resources taken: 5 → 113
+⚒ Work done → 113
+🆓 Resources released: 5 → 113
