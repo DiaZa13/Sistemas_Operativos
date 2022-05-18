@@ -4,12 +4,10 @@
 */
 
 #include <cstdio>
-#include <iostream>
-#include <fstream>
 #include <cstdlib>
 #include <unistd.h>
 #include <pthread.h>
-#include <semaphore.h>
+#include <cstdarg>
 #include "monitors.h"
 
 using namespace std;
@@ -19,21 +17,24 @@ using namespace std;
 #define RESOURCES 5
 #define ITERATIONS 2
 
-#define RESET "\e[0;0m"
-#define CONSUME "\e[0;38;5;167m"
-#define USE "\e[0;38;5;64m"
-#define FREE "\e[0;38;5;208m"
 
-sem_t resources;
-ofstream logbook;
+FILE* logbook;
 monitors monitor = monitors(RESOURCES);
+
+void print_2_file(const char* format, ...){
+    va_list args;
+    va_start(args, format);
+    vfprintf(logbook, format, args);
+    va_end(args);
+}
+
 
 void *simulate_work(int thread_id){
     int wait =1 + rand() % 5; /* random between 1 and 5 */
     /* simulating using the resource by wait time */
     sleep(wait);
 
-    logbook<<"⚒ Work done"<<" → "<<thread_id<<endl;
+    print_2_file("⚒ Work done → %d\n", thread_id);
     return nullptr;
 }
 
@@ -41,22 +42,22 @@ void *simulate_work(int thread_id){
 void *consume_resource(void *args){
     int thread_id = reinterpret_cast<int>((int *) args);
     int amount_resources = 1 + rand() % RESOURCES;
-    logbook<<"🍴 Will be consume "<<amount_resources<<"resources → "<<thread_id<<endl;
+    print_2_file("🍴 Will be consume %d resources → %d\n", amount_resources, thread_id);
     for(int i=0; i<ITERATIONS; i++){
-        logbook<<"Starting iteration "<<i+1<<" → "<<thread_id<<endl;
-        logbook<<"🖥 Mutex acquire, entering the monitor → "<<thread_id<<endl;
+        print_2_file("Starting iteration %d → \n",i+1, thread_id);
+        print_2_file("🖥 Mutex acquire, entering the monitor → %d\n",thread_id);
         /* acquiring the resource */
         if (!monitor.decrease_count(amount_resources))
-            logbook<<"✅ Enough resources available... → "<<thread_id<<endl;
+            print_2_file("✅ Enough resources available... → %d\n", thread_id);
         else
-            logbook<<"🚫 Not enough resources, it has to wait → "<<thread_id<<endl;
+            print_2_file("🚫 Not enough resources, it has to wait → %d\n", thread_id);
         monitor.acquire_resources(amount_resources);
 
-        logbook<<"⚠ Resources taken: "<<amount_resources<<" → "<<thread_id<<endl;
+        print_2_file("⚠ Resources taken: %d → %d\n", amount_resources, thread_id);
         simulate_work(thread_id);
 
         /* released the resource */
-        logbook<<"🆓 Resources released: "<<amount_resources<<" → "<<thread_id<<endl;
+        print_2_file("🆓 Resources released: %d → %d\n", amount_resources, thread_id);
         /* return the resource */
         monitor.release_resources(amount_resources);
     }
@@ -71,23 +72,19 @@ int main(int argc, char* argv[]){
     }
 
     /* txt file to save all the resources management */
-    logbook.open(argv[1], ios::out);
-    if(!logbook.is_open()){
+    logbook = fopen(argv[1],"w");
+    if(logbook == nullptr){
         perror("Error opening the log");
     }
 
     pthread_t threads[THREADS]; /* Defines the array to save the id for the threads */
     int return_value;
-    /* initializing the counting semaphore */
-    return_value = sem_init(&resources, 0, RESOURCES);
-    if (return_value){
-        perror("Error creating the semaphore");
-    }
-    logbook<<"**STARTING SIMULATION**"<<endl;
-    logbook<<"Creating threads..."<<endl;
+
+    print_2_file("**STARTING SIMULATION**\n");
+    print_2_file("Creating threads...\n");
     /* Creates the threads */
     for (int i=0; i<THREADS; i++){
-        logbook<<"Initializing thread → "<<i+111<<endl;
+        print_2_file("Initializing thread → %d\n",i+111);
         return_value = pthread_create(&threads[i], nullptr, consume_resource, (void *)(i+111));
 
         /* checking if the thread was created correctly */
@@ -98,6 +95,6 @@ int main(int argc, char* argv[]){
     }
 
     /* main waits for all the threads to finish */
-    logbook<<"Waiting for all threads to finish"<<endl;
+    print_2_file("Waiting for all threads to finish\n");
     pthread_exit(0);
 }
